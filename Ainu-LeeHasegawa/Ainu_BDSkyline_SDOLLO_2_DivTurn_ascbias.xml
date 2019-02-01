@@ -1,0 +1,236 @@
+<beast beautistatus="" beautitemplate="BinaryCTMC" namespace="beast.core:beast.evolution.alignment:beast.evolution.tree.coalescent:beast.core.util:beast.evolution.nuc:beast.evolution.operators:beast.evolution.sitemodel:beast.evolution.substitutionmodel:beast.evolution.likelihood" version="2.0">
+
+
+    <data dataType="standard" id="Ainu" name="alignment">
+                    <sequence id="seq_Asahikawa" taxon="Asahikawa" totalcount="2" value="10011??10010101000100111110111111011011101001010111111011111111101110100101010101100001111111011101001010011101101110101001001111101101011001111100111110111110110??????1001010010???11111111011111101001????????110100101010111101000001111101100100000101111011111111111111001111101000111111010001001000101010011000100110101001001001100101110110000011001" />
+                    <sequence id="seq_Bihoro" taxon="Bihoro" totalcount="2" value="10011101001010100010011111010111101101110100100111111101111111110111010010101001110000111111101110100001001110110111010010100111101010101010111110111111011111011010010010001100001001011111011111110100100001100110101001010111110000011111100101000010001111011111111111111001111010100111111010010001000100110011010111000101001001101100101111010000011001" />
+                    <sequence id="seq_Hiratori" taxon="Hiratori" totalcount="2" value="10011100100110100010011111011111101101110100101011111101111111110110010010101010101000111111101110100100001110110111010100101011110010101100111110111111011111011010010001010010101001111111101111110100110000000110010101001111111001000111101001000011001111011111111111111001111100100111111110010001001001110011000110000101101001101100101111010000011001" />
+                    <sequence id="seq_Horobetsu" taxon="Horobetsu" totalcount="2" value="10011101001110100010011111010111101101110100101011111101111111110101010010101010100100111111101110100100001110110111010100101011110010101100111101011111011111011010010010010100101001111111101111110100101000000110110101010111111001000111111001000010001111011111111111111001111100100111111010010001001001110111010010000100101001101100101111011000011001" />
+                    <sequence id="seq_Kushiro" taxon="Kushiro" totalcount="2" value="10011101001010100010011111010111101101110100101011111101111111110101010010011010110000111111101101100001001110110111010100100111110110101100111????111110111110110100100100011000110010111110111111101001000010001101001010101111????00101111001010000100011110111111111111110011110101001111110100100010001001100110???00010??1001001101100101111010000011001" />
+                    <sequence id="seq_Maoka" taxon="Maoka" totalcount="2" value="01111010010101010011011110101111101111101011101111111101111111101110001010101010100010111111011110001000101101101111010001101011100101011001111110011111011111111101001000110001100101011111101111101001100000001110010101010111100010001111100010010000011110111111111111110011111101010111110101000010100100101011010000001010011001101011101111000001011001" />
+                    <sequence id="seq_Nairo" taxon="Nairo" totalcount="2" value="11111010010101010010111110101111101011101010101111111101111111101110100110101010100001111111011110100000101101101111010100101011110001011001111110011110111111011001001000110001100101011111101111101001100000001110010101010111100010001111100010010000011110111111111111111001111101000111110110000010100010101011010000001010011001001010101111000001010011" />
+                    <sequence id="seq_Nayoro" taxon="Nayoro" totalcount="2" value="100111010010101000100111110111111011011101000110111111011111111111100100101010011100001111111011101001000011101101110101001001111100011011001111???11111011111010110010010010100111001111111111111110100101000000110010101011111110000001111100100100000101111111111111111111001111010100111111110001101000101110111000100100101001001001100101111010100011001" />
+                    <sequence id="seq_Niikappu" taxon="Niikappu" totalcount="2" value="10011100100110100010011111010111101101110100101011111101111111110110010010101010101000111111101110100100001101110111010100101011110010101100111110011111011111011010010001010010??100011111110111111010010001000011010010100111111000100011110100100001000111101111111111111100111110010011111101001000???100101001010011000010010100???1100101111010000011001" />
+                    <sequence id="seq_Nukkibetsu" taxon="Nukkibetsu" totalcount="2" value="10011100100110100010011111010111101101110100??1011111101111111110110010010101010101000111111101110100100001110110111010100101011110010101100111????111110111110101100100010100101010001111111011111101001001000001100101100011111010010001111010010000100011110111111111111110011111001001111110100????1001001010010100110000101001000101100011111010000011001" />
+                    <sequence id="seq_Obihiro" taxon="Obihiro" totalcount="2" value="10011101001010100010011111010111101101110100101011111101111111110110010010100110110000111111101101100001001110110111010100100111101110101100111110111111011111011010010010001100011001111111011111110100100001000110101001010111101000100111100101000010001111011111111111111001111010100111111010010001000100110111010101100101001001101100101111010100011001" />
+                    <sequence id="seq_Ochiho" taxon="Ochiho" totalcount="2" value="00111??0010101010010011110101111101111101010101011111101111111101110001010101010101000111111011110100000101101101111010001101011110001011001111?1001111101111101010100100011000110010101111110111110101010000000111001101001011110001000111110010?????????1110111111111111111001111100011111110110000010100010101011010000001010010010011010101111000001010101" />
+                    <sequence id="seq_Oshamambe" taxon="Oshamambe" totalcount="2" value="100111010010??1000100111110101111011011101001010111111011111111101010100101010101010001111111011101001000011011101110101001100111100101011001111???111110111110101100100100101001010010111111011111101001100000001101010101001111010010001111100010001000011110111111111111110011111001001111110100100010010010101010???10000101001000101100101111010000101001" />
+                    <sequence id="seq_Raichishka" taxon="Raichishka" totalcount="2" value="10111010010101010111111110101111101011101110101011111101111111101110101001101001100010111111011110100000101101101111010001101011110001011001111110011111011111011001101100110001100111011111101111101001100000001101010101010111100010001111100010001100001110111111111111110011111100010111110100100010010010101011010000001010011001101010101111001000010101" />
+                    <sequence id="seq_Samani" taxon="Samani" totalcount="2" value="100111010010011000100111110101111011011101001010111110111111111101010100101010101100001111111011011000100011011101110101001001111010101011001111100111110111?10110100100100011000110010111111011111101001000010001101001100101111001010001111001010001000011110111111111111110011111001001111110100100010001010100110???01000101000101101100101111010000011001" />
+                    <sequence id="seq_Shiraura" taxon="Shiraura" totalcount="2" value="11011010010101010010011110101111101011101010100111111101111111101100101001101010100010111111011110100000101101101111010001101011110001011001111110011111011111011001001000110001100101011111101111101001100000001110010110010111100010001111100010010000011110111111111111111001111100001111110110000100010100101011010000001010011001001010101111001000010101" />
+                    <sequence id="seq_Soya" taxon="Soya" totalcount="2" value="01011??10011101000100111110101111011011101101010111111011111111011100100101010011100001111111011100101000011101011110100011001111101111111001111100111110111110101??????1000110010100101111110111111010010000001011001011001011111000001011110010100010000111011111111111111100111110????111110111001100100100110011010100100101001001101010101111000010011001" />
+                    <sequence id="seq_Tarantomari" taxon="Tarantomari" totalcount="2" value="00111010010110011011111110101111101101101110101111111101111111101110101010101011100010111111011110100000011101101110101001101011100101011001111110011111011110111001001000110001100101011111101111101001100000001110010101010111100010001111100100010000011110111111111111110101111100010111110101000010100010101011010000001010011001001011101111000010011001" />
+                    <sequence id="seq_Yakumo" taxon="Yakumo" totalcount="2" value="10011101001010100010011111011111111101110100101011111101111111110110010010101010110000111111101110100100001110110111010100110011110010101100111110011111011111011010010010010100101001011111101111110100110000000110111010100111110001000111110001000100001111011111111111111001111101100111111010010001001001010101011010000101001001101100101111010000101001" />
+                    <userDataType ambiguities="" id="StandardData.0" nrOfStates="2" spec="beast.evolution.datatype.StandardData" />
+                </data>
+
+
+    
+
+
+    
+
+
+    
+<map name="Uniform">beast.math.distributions.Uniform</map>
+<map name="Exponential">beast.math.distributions.Exponential</map>
+<map name="LogNormal">beast.math.distributions.LogNormalDistributionModel</map>
+<map name="Normal">beast.math.distributions.Normal</map>
+<map name="Beta">beast.math.distributions.Beta</map>
+<map name="Gamma">beast.math.distributions.Gamma</map>
+<map name="LaplaceDistribution">beast.math.distributions.LaplaceDistribution</map>
+<map name="prior">beast.math.distributions.Prior</map>
+<map name="InverseGamma">beast.math.distributions.InverseGamma</map>
+<map name="OneOnX">beast.math.distributions.OneOnX</map>
+
+
+<run chainLength="20000000" id="mcmc" spec="MCMC">
+    <state id="state" storeEvery="5000">
+        <tree id="Tree.t:Ainu" name="stateNode">
+            <taxonset id="TaxonSet.Ainu" spec="TaxonSet">
+                <alignment idref="Ainu" />
+            </taxonset>
+        </tree>
+        <parameter id="deathRate.SDollo" lower="0.0" name="stateNode">1.0E-4</parameter>
+        <parameter id="ucldStdev.c:Ainu" lower="0.0" name="stateNode">0.1</parameter>
+        <stateNode dimension="36" id="rateCategories.c:Ainu" spec="parameter.IntegerParameter">1</stateNode>
+        <parameter id="origin.s.t:Ainu" lower="0.0" name="stateNode" upper="Infinity">2000.0</parameter>
+        <parameter id="Turnover.s.t:Ainu" lower="0.0" name="stateNode" upper="1.0">0.1</parameter>
+        <parameter dimension="2" id="Diversification.s.t:Ainu" lower="0.0" name="stateNode" upper="Infinity">0.001</parameter>
+        <parameter id="ucldMean.c:Ainu" name="stateNode">1.0</parameter>
+    </state>
+
+    <init estimate="false" id="RandomTree.t:Ainu" initial="@Tree.t:Ainu" spec="beast.evolution.tree.RandomTree" taxa="@Ainu">
+        <populationModel id="ConstantPopulation0.t:Ainu" spec="ConstantPopulation">
+            <parameter id="randomPopSize.t:Ainu" name="popSize">1.0</parameter>
+        </populationModel>
+    </init>
+
+    <distribution id="posterior" spec="util.CompoundDistribution">
+        <distribution id="prior" spec="util.CompoundDistribution">
+        <distribution conditionOnRhoSampling="True" id="BirthDeathSkySerial.t:Ainu" removalProbability="1.0" spec="beast.evolution.speciation.ParameterizedSABirthDeathModel" tree="@Tree.t:Ainu"><SABDParameterization diversificationRate="@Diversification.s.t:Ainu" id="parameterization.t:Ainu" name="parameterization" origin="@origin.s.t:Ainu" samplingProportion="0.0" spec="beast.evolution.speciation.DiversificationTurnoverParameterization" turnover="@Turnover.s.t:Ainu" /><parameter dimension="1" estimate="false" id="rhoF.t:Ainu" lower="0.0" name="rho" upper="1.0" value="1.0" /></distribution><prior id="DiversificationPrior.t:Ainu" name="distribution" x="@Diversification.s.t:Ainu">
+                <Uniform id="Uniform.divprior" name="distr" upper="1000.0" /></prior>
+            <prior id="DeathRateSDolloPrior" name="distribution" x="@deathRate.SDollo">
+                <Exponential id="Exponential.0" name="distr">
+                    <parameter id="RealParameter.DeathRate" lower="0.0" name="mean" upper="0.0">1.0E-4</parameter>                </Exponential>
+            </prior>
+            <prior id="TurnoverPrior.s.t:Ainu" name="distribution" x="@Turnover.s.t:Ainu">
+                <Uniform id="Uniform.turnprior" name="distr" upper="1.0" /></prior>
+            <prior id="originPrior.s.t:Ainu" name="distribution" x="@origin.s.t:Ainu">
+                <Uniform id="Uniform.0" name="distr" upper="10000.0" />
+            </prior>
+
+            <prior id="MeanRatePrior.c:Ainu" name="distribution" x="@ucldMean.c:Ainu">
+                <Uniform id="Uniform.01" name="distr" upper="1" />
+            </prior>
+            <prior id="ucldStdevPrior.c:Ainu" name="distribution" x="@ucldStdev.c:Ainu">
+                <Gamma id="Gamma.0" name="distr">
+                    <parameter estimate="false" id="RealParameter.07" name="alpha">0.5396</parameter>
+                    <parameter estimate="false" id="RealParameter.08" name="beta">0.3819</parameter>
+                </Gamma>
+            </prior>
+            <distribution id="Hokkaido.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:Ainu">
+                <taxonset id="Hokkaido" spec="TaxonSet">
+                    <taxon id="Asahikawa" spec="Taxon" />
+                    <taxon id="Bihoro" spec="Taxon" />
+                    <taxon id="Hiratori" spec="Taxon" />
+                    <taxon id="Horobetsu" spec="Taxon" />
+                    <taxon id="Kushiro" spec="Taxon" />
+                    <taxon id="Nayoro" spec="Taxon" />
+                    <taxon id="Niikappu" spec="Taxon" />
+                    <taxon id="Nukkibetsu" spec="Taxon" />
+                    <taxon id="Obihiro" spec="Taxon" />
+                    <taxon id="Oshamambe" spec="Taxon" />
+                    <taxon id="Samani" spec="Taxon" />
+                    <taxon id="Soya" spec="Taxon" />
+                    <taxon id="Yakumo" spec="Taxon" />
+                </taxonset>
+            </distribution>
+            <distribution id="Karafuto.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:Ainu">
+                <taxonset id="Karafuto" spec="TaxonSet">
+                    <taxon id="Maoka" spec="Taxon" />
+                    <taxon id="Nairo" spec="Taxon" />
+                    <taxon id="Ochiho" spec="Taxon" />
+                    <taxon id="Raichishka" spec="Taxon" />
+                    <taxon id="Shiraura" spec="Taxon" />
+                    <taxon id="Tarantomari" spec="Taxon" />
+                </taxonset>
+                <Normal id="Normal.0" name="distr">
+                    <parameter estimate="false" id="RealParameter.09" name="mean">460.0</parameter>
+                    <parameter estimate="false" id="RealParameter.010" name="sigma">51.0</parameter>
+                </Normal>
+            </distribution>
+        </distribution>
+        <distribution id="likelihood" spec="util.CompoundDistribution">
+            <distribution id="treeLikelihood.Ainu" spec="ALSTreeLikelihood" tree="@Tree.t:Ainu" useAmbiguities="true">
+                <observationprocess id="AnyTipObservationProcess.0" integrateGainRate="true" mu="@deathRate.SDollo" spec="AnyTipObservationProcess" tree="@Tree.t:Ainu">
+                    <data data="@Ainu" filter="-" id="orgdata.Ainu" spec="FilteredAlignment">
+                        <userDataType extantCode="1" id="MutationDeathType.0" spec="beast.evolution.datatype.MutationDeathType" />
+                    </data>
+                    <siteModel id="SiteModel.s:Ainu" spec="SiteModel">
+                        <parameter estimate="false" id="mutationRate.s:Ainu" name="mutationRate">1.0</parameter>
+                        <parameter estimate="false" id="proportionInvariant.s:Ainu" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+                        <substModel deathprob="@deathRate.SDollo" id="SDollo" spec="MutationDeathModel">
+                            <frequencies id="freqs.s:Ainu" spec="Frequencies">
+                                <parameter dimension="2" id="RealParameter.SDolloFreqs" name="frequencies">1.0 0.0</parameter>
+                            </frequencies>
+                        </substModel>
+                    </siteModel>
+                </observationprocess>
+                <data idref="orgdata.Ainu" />
+                <siteModel idref="SiteModel.s:Ainu" />
+                <branchRateModel clock.rate="@ucldMean.c:Ainu" id="RelaxedClock.c:Ainu" rateCategories="@rateCategories.c:Ainu" spec="beast.evolution.branchratemodel.UCRelaxedClockModel" tree="@Tree.t:Ainu">
+                    <LogNormal S="@ucldStdev.c:Ainu" id="LogNormalDistributionModel.c:Ainu" meanInRealSpace="true" name="distr">
+                        <parameter estimate="false" id="RealParameter.ucldMean" lower="0.0" name="M" upper="1.0">1.0</parameter>
+                    </LogNormal>
+                </branchRateModel>
+            </distribution>
+        </distribution>
+        
+    </distribution>
+
+    <operator id="deathRateSDolloScaler" parameter="@deathRate.SDollo" scaleFactor="0.5" spec="ScaleOperator" weight="3.0" />
+
+
+    <operator id="treeScaler.t:Ainu" scaleFactor="0.5" spec="ScaleOperator" tree="@Tree.t:Ainu" weight="3.0" />
+
+    <operator id="treeRootScaler.t:Ainu" rootOnly="true" scaleFactor="0.5" spec="ScaleOperator" tree="@Tree.t:Ainu" weight="3.0" />
+
+    <operator id="UniformOperator.t:Ainu" spec="Uniform" tree="@Tree.t:Ainu" weight="30.0" />
+
+    <operator id="SubtreeSlide.t:Ainu" spec="SubtreeSlide" tree="@Tree.t:Ainu" weight="15.0" />
+
+    <operator id="narrow.t:Ainu" spec="Exchange" tree="@Tree.t:Ainu" weight="15.0" />
+
+    <operator id="wide.t:Ainu" isNarrow="false" spec="Exchange" tree="@Tree.t:Ainu" weight="3.0" />
+
+    <operator id="WilsonBalding.t:Ainu" spec="WilsonBalding" tree="@Tree.t:Ainu" weight="3.0" />
+
+
+    <operator id="ucldStdevScaler.c:Ainu" parameter="@ucldStdev.c:Ainu" scaleFactor="0.5" spec="ScaleOperator" weight="3.0" />
+
+    <operator id="CategoriesRandomWalk.c:Ainu" parameter="@rateCategories.c:Ainu" spec="IntRandomWalkOperator" weight="10.0" windowSize="1" />
+
+    <operator id="CategoriesSwapOperator.c:Ainu" intparameter="@rateCategories.c:Ainu" spec="SwapOperator" weight="10.0" />
+
+    <operator id="CategoriesUniform.c:Ainu" parameter="@rateCategories.c:Ainu" spec="UniformOperator" weight="10.0" />
+
+    <operator id="BDSKY_serialtreeScaler.t:Ainu" scaleFactor="0.5" spec="ScaleOperator" tree="@Tree.t:Ainu" weight="3.0" />
+
+    <operator id="BDSKY_serialtreeRootScaler.t:Ainu" rootOnly="true" scaleFactor="0.5" spec="ScaleOperator" tree="@Tree.t:Ainu" weight="3.0" />
+
+    <operator id="BDSKY_serialUniformOperator.t:Ainu" spec="Uniform" tree="@Tree.t:Ainu" weight="30.0" />
+
+    <operator id="BDSKY_serialSubtreeSlide.t:Ainu" spec="SubtreeSlide" tree="@Tree.t:Ainu" weight="15.0" />
+
+    <operator id="BDSKY_serialnarrow.t:Ainu" spec="Exchange" tree="@Tree.t:Ainu" weight="15.0" />
+
+    <operator id="BDSKY_serialwide.t:Ainu" isNarrow="false" spec="Exchange" tree="@Tree.t:Ainu" weight="3.0" />
+
+    <operator id="BDSKY_serialWilsonBalding.t:Ainu" spec="WilsonBalding" tree="@Tree.t:Ainu" weight="3.0" />
+
+    <operator id="TurnoverScaler.s.t:Ainu" parameter="@Turnover.s.t:Ainu" scaleFactor="0.75" spec="ScaleOperator" weight="2.0" />
+
+
+    <operator id="RScaler.s.t:Ainu" parameter="@Diversification.s.t:Ainu" scaleFactor="0.75" spec="ScaleOperator" weight="10.0" />
+
+    <operator id="origScaler.s.t:Ainu" parameter="@origin.s.t:Ainu" scaleFactor="0.75" spec="ScaleOperator" weight="1.0" />
+
+
+
+    <logger fileName="Ainu_BDSkyline_SDOLLO_2.log" id="tracelog" logEvery="2000" model="@posterior" sort="smart">
+        <log idref="posterior" />
+        <log idref="likelihood" />
+        <log idref="prior" />
+        <log idref="treeLikelihood.Ainu" />
+        <log id="TreeHeight.t:Ainu" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:Ainu" />
+        <log idref="deathRate.SDollo" />
+        <log idref="ucldStdev.c:Ainu" />
+        <log branchratemodel="@RelaxedClock.c:Ainu" id="rate.c:Ainu" spec="beast.evolution.branchratemodel.RateStatistic" tree="@Tree.t:Ainu" />
+        <log idref="BirthDeathSkySerial.t:Ainu" />
+        <log idref="origin.s.t:Ainu" />
+        <log idref="Turnover.s.t:Ainu" />
+        <log idref="Diversification.s.t:Ainu" />
+        <log expression="Diversification.s.t:Ainu Turnover.s.t:Ainu *" id="birth.t:Ainu" spec="beast.math.statistic.RPNcalculator">
+            <parameter idref="Turnover.s.t:Ainu" />
+            <parameter idref="Diversification.s.t:Ainu" />
+        </log>
+        <log idref="Hokkaido.prior" />
+        <log idref="Karafuto.prior" />
+        <log idref="ucldMean.c:Ainu" />
+    </logger>
+
+    <logger id="screenlog" logEvery="1000">
+        <log idref="posterior" />
+        <log arg="@posterior" id="ESS.0" spec="util.ESS" />
+        <log idref="likelihood" />
+        <log idref="prior" />
+    </logger>
+
+    <logger fileName="Ainu_BDSkyline_SDOLLO_2.trees" id="treelog.t:Ainu" logEvery="2000" mode="tree">
+        <log branchratemodel="@RelaxedClock.c:Ainu" id="TreeWithMetaDataLogger.t:Ainu" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:Ainu" />
+    </logger>
+
+</run>
+
+</beast>
