@@ -51,6 +51,7 @@
                 <alignment idref="Ainu" />
             </taxonset>
         </tree>
+		<parameter id="gammaShape.s:Ainu" name="stateNode">1.0</parameter>
         <parameter id="deathRate.SDollo" lower="0.0" name="stateNode">1.0E-4</parameter>
         <parameter id="ucldStdev.c:Ainu" lower="0.0" name="stateNode">0.1</parameter>
         <stateNode dimension="36" id="rateCategories.c:Ainu" spec="parameter.IntegerParameter">1</stateNode>
@@ -82,6 +83,11 @@
             </prior>
             <prior id="MeanRatePrior.c:Ainu" name="distribution" x="@ucldMean.c:Ainu">
                 <Uniform id="Uniform.01" lower="1.0E-4" name="distr" upper="1.0" />
+            </prior>
+			<prior id="GammaShapePrior.s:Ainu" name="distribution" x="@gammaShape.s:Ainu">
+                <Exponential id="Exponential.gamma" name="distr">
+                    <parameter id="RealParameter.gammashape" lower="0.0" name="mean" upper="0.0">1.0</parameter>
+                </Exponential>
             </prior>
             <prior id="ucldStdevPrior.c:Ainu" name="distribution" x="@ucldStdev.c:Ainu">
                 <Gamma id="Gamma.02" name="distr">
@@ -127,7 +133,7 @@
                     <data data="@Ainu" filter="-" id="orgdata.Ainu" spec="FilteredAlignment">
                         <userDataType extantCode="1" id="MutationDeathType.0" spec="beast.evolution.datatype.MutationDeathType" />
                     </data>
-                    <siteModel id="SiteModel.s:Ainu" spec="SiteModel">
+                    <siteModel id="SiteModel.s:Ainu" spec="SiteModel", shape="@gammaShape.s:Ainu", gammaCategoryCount="4">
                         <parameter estimate="false" id="mutationRate.s:Ainu" name="mutationRate">1.0</parameter>
                         <parameter estimate="false" id="proportionInvariant.s:Ainu" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
                         <substModel deathprob="@deathRate.SDollo" id="SDollo" spec="MutationDeathModel">
@@ -148,6 +154,8 @@
         </distribution>
         
     </distribution>
+	
+	<operator id="gammaShapeScaler.s:Ainu" parameter="@gammaShape.s:Ainu" scaleFactor="0.5" spec="ScaleOperator" weight="0.1" />
 
     <operator id="deathRateSDolloScaler" parameter="@deathRate.SDollo" scaleFactor="0.5" spec="ScaleOperator" weight="3.0" />
 
@@ -198,6 +206,7 @@
         <log idref="prior" />
         <log idref="treeLikelihood.Ainu" />
         <log id="TreeHeight.t:Ainu" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:Ainu" />
+		<log idref="gammaShape.s:Ainu" />
         <log idref="deathRate.SDollo" />
         <log idref="ucldStdev.c:Ainu" />
         <log branchratemodel="@RelaxedClock.c:Ainu" id="rate.c:Ainu" spec="beast.evolution.branchratemodel.RateStatistic" tree="@Tree.t:Ainu" />
