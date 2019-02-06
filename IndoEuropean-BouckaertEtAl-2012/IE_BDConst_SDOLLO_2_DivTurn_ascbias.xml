@@ -253,6 +253,7 @@ ScotsGaelic=0
             </trait>
             <taxonset idref="TaxonSet.IELex_Bouckaert2012" />
         </tree>
+		<parameter id="gammaShape.s:IELex_Bouckaert2012" name="stateNode">1.0</parameter>
         <parameter id="ucldMean.c:IELex_Bouckaert2012" name="stateNode">1</parameter>
         <parameter id="ucldStdev.c:IELex_Bouckaert2012" lower="0.0" name="stateNode">0.1</parameter>
         <stateNode dimension="204" id="rateCategories.c:IELex_Bouckaert2012" spec="parameter.IntegerParameter">1</stateNode>
@@ -276,6 +277,7 @@ ScotsGaelic=0
                 <Exponential id="Exponential.Death" name="distr">
                     <parameter id="RealParameter.DeathRate" lower="0.0" name="mean" upper="0.0">1.0E-4</parameter>                </Exponential>
             </prior>
+			
             <prior id="TurnoverPrior.s.t:IELex_Bouckaert2012" name="distribution" x="@Turnover.s.t:IELex_Bouckaert2012">
                 <Uniform id="Uniform.turnprior" name="distr" upper="1.0" /></prior>
             <prior id="originPrior.s.t:IELex_Bouckaert2012" name="distribution" x="@origin.s.t:IELex_Bouckaert2012">
@@ -287,8 +289,13 @@ ScotsGaelic=0
                     <parameter id="RealParameter.06" lower="0.0" name="beta" upper="0.0">1.0</parameter>
                 </Beta>
             </prior>
+			<prior id="GammaShapePrior.s:IELex_Bouckaert2012" name="distribution" x="@gammaShape.s:IELex_Bouckaert2012">
+                <Exponential id="Exponential.gamma" name="distr">
+                    <parameter id="RealParameter.gammashape" lower="0.0" name="mean" upper="0.0">1.0</parameter>
+                </Exponential>
+            </prior>
             <prior id="MeanRatePrior.c:IELex_Bouckaert2012" name="distribution" x="@ucldMean.c:IELex_Bouckaert2012">
-                <Uniform id="Uniform.04" lower="1.0E-5" name="distr" upper="10.0" />
+                <Uniform id="Uniform.04" lower="1.0E-5" name="distr" upper="1.0" />
             </prior>
             <prior id="ucldStdevPrior.c:IELex_Bouckaert2012" name="distribution" x="@ucldStdev.c:IELex_Bouckaert2012">
                 <Exponential id="Exponential.0" name="distr">
@@ -868,7 +875,7 @@ ScotsGaelic=0
                     <data data="@IELex_Bouckaert2012" filter="-" id="orgdata.IELex_Bouckaert2012" spec="FilteredAlignment">
                         <userDataType extantCode="1" id="MutationDeathType.0" spec="beast.evolution.datatype.MutationDeathType" />
                     </data>
-                    <siteModel id="SiteModel.s:IELex_Bouckaert2012" spec="SiteModel">
+                    <siteModel id="SiteModel.s:IELex_Bouckaert2012" spec="SiteModel", shape="@gammaShape.s:IELex_Bouckaert2012", gammaCategoryCount="4">
                         <parameter estimate="false" id="mutationRate.s:IELex_Bouckaert2012" name="mutationRate">1.0</parameter>
                         <parameter estimate="false" id="proportionInvariant.s:IELex_Bouckaert2012" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
                         <substModel deathprob="@deathRate.SDollo" id="SDollo" spec="MutationDeathModel">
@@ -898,6 +905,7 @@ ScotsGaelic=0
 
     <operator id="CategoriesUniform.c:IELex_Bouckaert2012" parameter="@rateCategories.c:IELex_Bouckaert2012" spec="UniformOperator" weight="10.0" />
 
+	<operator id="gammaShapeScaler.s:IELex_Bouckaert2012" parameter="@gammaShape.s:IELex_Bouckaert2012" scaleFactor="0.5" spec="ScaleOperator" weight="0.1" />
 
     <operator id="deathRateSDolloScaler" parameter="@deathRate.SDollo" scaleFactor="0.5" spec="ScaleOperator" weight="3.0" />
 
@@ -970,6 +978,7 @@ ScotsGaelic=0
         <log idref="prior" />
         <log idref="treeLikelihood.IELex_Bouckaert2012" />
         <log id="TreeHeight.t:IELex_Bouckaert2012" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:IELex_Bouckaert2012" />
+		<log idref="gammaShape.s:IELex_Bouckaert2012" />
         <log idref="ucldMean.c:IELex_Bouckaert2012" />
         <log idref="ucldStdev.c:IELex_Bouckaert2012" />
         <log branchratemodel="@RelaxedClock.c:IELex_Bouckaert2012" id="rate.c:IELex_Bouckaert2012" spec="beast.evolution.branchratemodel.RateStatistic" tree="@Tree.t:IELex_Bouckaert2012" />
