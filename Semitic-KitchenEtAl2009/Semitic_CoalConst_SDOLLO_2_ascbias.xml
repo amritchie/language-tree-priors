@@ -83,8 +83,8 @@ Soqotri=0                <taxa id="TaxonSet.Semitic" spec="TaxonSet">
             </trait>
             <taxonset idref="TaxonSet.Semitic" />
         </tree>
-        
-         <parameter id="mutationRate.s:Semitic" name="stateNode">1.0</parameter>               
+        <parameter id="gammaShape.s:Semitic" name="stateNode">1.0</parameter>
+        <parameter id="mutationRate.s:Semitic" name="stateNode">1.0</parameter>               
         <parameter id="deathRate.SDollo" lower="0.0" name="stateNode">1.0E-4</parameter>
         <parameter id="ucldMean.c:Semitic" name="stateNode">1</parameter>
         <parameter id="ucldStdev.c:Semitic" lower="0.0" name="stateNode">0.1</parameter>
@@ -137,6 +137,11 @@ Soqotri=0                <taxa id="TaxonSet.Semitic" spec="TaxonSet">
                     <parameter estimate="false" id="RealParameter.02" name="alpha">1.0</parameter>
                     <parameter estimate="false" id="RealParameter.03" name="beta">1000.0</parameter>
                 </Gamma>
+            </prior>
+			<prior id="GammaShapePrior.s:Semitic" name="distribution" x="@gammaShape.s:Semitic">
+                <Exponential id="Exponential.gamma" name="distr">
+                    <parameter id="RealParameter.gammashape" lower="0.0" name="mean" upper="0.0">1.0</parameter>
+                </Exponential>
             </prior>
             <prior id="ucldStdevPrior.c:Semitic" name="distribution" x="@ucldStdev.c:Semitic">
                 <Gamma id="Gamma.02" name="distr">
@@ -205,7 +210,7 @@ Soqotri=0                <taxa id="TaxonSet.Semitic" spec="TaxonSet">
                     <data data="@Semitic" filter="-" id="orgdata.Semitic" spec="FilteredAlignment">
                         <userDataType extantCode="1" id="MutationDeathType.0" spec="beast.evolution.datatype.MutationDeathType" />
                     </data>
-                    <siteModel id="SiteModel.s:Semitic" spec="SiteModel">
+                    <siteModel id="SiteModel.s:Semitic" spec="SiteModel", shape="@gammaShape.s:Semitic", gammaCategoryCount="4">
                         <parameter estimate="false" id="proportionInvariant.s:Semitic" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
                         <substModel deathprob="@deathRate.SDollo" id="SDollo" spec="MutationDeathModel">
                             <frequencies id="freqs.s:Semitic" spec="Frequencies">
@@ -228,6 +233,7 @@ Soqotri=0                <taxa id="TaxonSet.Semitic" spec="TaxonSet">
 
     <operator id="deathRateSDolloScaler" parameter="@deathRate.SDollo" scaleFactor="0.5" spec="ScaleOperator" weight="3.0" />
 
+	<operator id="gammaShapeScaler.s:Semitic" parameter="@gammaShape.s:Semitic" scaleFactor="0.5" spec="ScaleOperator" weight="0.1" />
 
     <operator id="treeScaler.t:Semitic" scaleFactor="0.5" spec="ScaleOperator" tree="@Tree.t:Semitic" weight="3.0" />
 
@@ -276,6 +282,7 @@ Soqotri=0                <taxa id="TaxonSet.Semitic" spec="TaxonSet">
         <log idref="prior" />
         <log idref="treeLikelihood.Semitic" />
         <log id="TreeHeight.t:Semitic" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:Semitic" />
+		<log idref="gammaShape.s:Semitic" />
         <log idref="mutationRate.s:Semitic" />
         <log idref="deathRate.SDollo" />
         <log idref="ucldMean.c:Semitic" />

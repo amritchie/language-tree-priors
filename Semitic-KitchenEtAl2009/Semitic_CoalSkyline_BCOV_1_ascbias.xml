@@ -140,7 +140,7 @@ Soqotri=0                <taxa id="TaxonSet.Semitic" spec="TaxonSet">
                 </Gamma>
             </prior>
             <prior id="MeanRatePrior.c:Semitic" name="distribution" x="@ucldMean.c:Semitic">
-                <Uniform id="Uniform.01" lower="1.0E-5" name="distr" upper="10" />
+                <Uniform id="Uniform.01" lower="1.0E-5" name="distr" upper="0.01" />
             </prior>
             <prior id="ucldStdevPrior.c:Semitic" name="distribution" x="@ucldStdev.c:Semitic">
                 <Gamma id="Gamma.01" name="distr">
