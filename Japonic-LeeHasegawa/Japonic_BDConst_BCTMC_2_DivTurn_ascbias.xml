@@ -156,10 +156,10 @@ YONAGUNI=0                <taxa id="TaxonSet.Japonic" spec="TaxonSet">
 		<stateNode dimension="36" id="rateCategories.c:Japonic" spec="parameter.IntegerParameter">1</stateNode>
         <parameter id="gammaShape.s:Japonic" name="stateNode">1.0</parameter>
         <parameter dimension="2" id="freqParameter.s:Japonic" lower="0.0" name="stateNode" upper="1.0">0.5</parameter>
-        <parameter id="origin.s.t:Japonic" lower="0.0" name="stateNode" upper="Infinity">10000.0</parameter>
+        <parameter id="origin.s.t:Japonic" lower="0.0" name="stateNode" upper="Infinity">3000.0</parameter>
         <parameter id="samplingProportion.s.t:Japonic" lower="0.0" name="stateNode" upper="1.0">0.01</parameter>
         <parameter id="Turnover.s.t:Japonic" lower="0.0" name="stateNode" upper="1.0">0.1</parameter>
-        <parameter dimension="3" id="Diversification.s.t:Japonic" lower="0.0" name="stateNode" upper="Infinity">0.001</parameter>
+        <parameter dimension="1" id="Diversification.s.t:Japonic" lower="0.0" name="stateNode" upper="Infinity">0.001</parameter>
     </state>
 
     <init estimate="false" id="RandomTree.t:Japonic" initial="@Tree.t:Japonic" spec="beast.evolution.tree.RandomTree" taxa="@Japonic">
@@ -174,7 +174,7 @@ YONAGUNI=0                <taxa id="TaxonSet.Japonic" spec="TaxonSet">
                 <Uniform id="Uniform.divprior" name="distr" upper="1000.0" /></prior>
             <prior id="TurnoverPrior.s.t:Japonic" name="distribution" x="@Turnover.s.t:Japonic">
                 <Uniform id="Uniform.turnprior" name="distr" upper="1.0" /></prior>
-            <prior id="MeanRatePrior.c:Japonic" name="distribution" x="@ucldMean.c:Japonic">
+			<prior id="MeanRatePrior.c:Japonic" name="distribution" x="@ucldMean.c:Japonic">
                 <Uniform id="Uniform.MRP" lower="1.0E-5" name="distr" upper="1.0" />
             </prior>
             <prior id="ucldStdevPrior.c:Japonic" name="distribution" x="@ucldStdev.c:Japonic">
@@ -313,7 +313,7 @@ YONAGUNI=0                <taxa id="TaxonSet.Japonic" spec="TaxonSet">
 
     <operator id="origScaler.s.t:Japonic" parameter="@origin.s.t:Japonic" scaleFactor="0.75" spec="ScaleOperator" weight="1.0" />
 
-    <logger fileName="Japonic_BDSkyline_BCTMC_1.log" id="tracelog" logEvery="3000" model="@posterior" sort="smart">
+    <logger fileName="Japonic_BDConst_BCTMC_2.log" id="tracelog" logEvery="3000" model="@posterior" sort="smart">
         <log idref="posterior" />
         <log idref="likelihood" />
         <log idref="prior" />
@@ -353,7 +353,7 @@ YONAGUNI=0                <taxa id="TaxonSet.Japonic" spec="TaxonSet">
         <log idref="prior" />
     </logger>
 
-    <logger fileName="Japonic_BDSkyline_BCTMC_1.trees" id="treelog.t:Japonic" logEvery="3000" mode="tree">
+    <logger fileName="Japonic_BDConst_BCTMC_2.trees" id="treelog.t:Japonic" logEvery="3000" mode="tree">
         <log branchratemodel="@RelaxedClock.c:Japonic" id="TreeWithMetaDataLogger.t:Japonic" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:Japonic" />
     </logger>
 

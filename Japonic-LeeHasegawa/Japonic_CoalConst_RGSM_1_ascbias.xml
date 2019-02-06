@@ -153,7 +153,9 @@ YONAGUNI=0                <taxa id="TaxonSet.Japonic" spec="TaxonSet">
         </tree>
         <parameter id="RGSMucldMeanGamma.s:Japonic" name="stateNode">1.0</parameter>         <parameter id="RGSMucldStdevGamma.s:Japonic" lower="0.0" name="stateNode" upper="5.0">0.5</parameter>         <stateNode dimension="189" id="RGSMrateCategoriesGamma.s:Japonic" spec="parameter.IntegerParameter">1</stateNode> 
         <parameter dimension="2" id="freqParameter.s:Japonic" lower="0.0" name="stateNode" upper="1.0">0.5</parameter>
-        <parameter id="clockRate.c:Japonic" name="stateNode">1.0</parameter>
+        <parameter id="ucldMean.c:Japonic" name="stateNode">1.0</parameter>
+		<parameter id="ucldStdev.c:Japonic" lower="0.0" name="stateNode">0.1</parameter>
+		<stateNode dimension="36" id="rateCategories.c:Japonic" spec="parameter.IntegerParameter">1</stateNode>
         <parameter id="popSize.t:Japonic" name="stateNode">5000</parameter>
     </state>
 
@@ -169,8 +171,14 @@ YONAGUNI=0                <taxa id="TaxonSet.Japonic" spec="TaxonSet">
                 <populationModel id="ConstantPopulation.t:Japonic" popSize="@popSize.t:Japonic" spec="ConstantPopulation" />
                 <treeIntervals id="TreeIntervals.t:Japonic" spec="TreeIntervals" tree="@Tree.t:Japonic" />
             </distribution>
-            <prior id="ClockPrior.c:Japonic" name="distribution" x="@clockRate.c:Japonic">
-                                <Uniform id="Uniform.0" lower="1.0E-5" name="distr" upper="1.0" />
+            <prior id="MeanRatePrior.c:Japonic" name="distribution" x="@ucldMean.c:Japonic">
+                <Uniform id="Uniform.MRP" lower="1.0E-5" name="distr" upper="1.0" />
+            </prior>
+            <prior id="ucldStdevPrior.c:Japonic" name="distribution" x="@ucldStdev.c:Japonic">
+                <Gamma id="Gamma.UCLN" name="distr">
+                    <parameter estimate="false" id="RealParameter.A" name="alpha">0.5396</parameter>
+                    <parameter estimate="false" id="RealParameter.B" name="beta">0.3819</parameter>
+                </Gamma>
             </prior>
             <prior id="RGSMMeanPrior.s:Japonic" name="distribution" x="@RGSMucldMeanGamma.s:Japonic">
                 <Exponential id="Exponential.RGSMMean" name="distr">
@@ -231,7 +239,11 @@ YONAGUNI=0                <taxa id="TaxonSet.Japonic" spec="TaxonSet">
                         <frequencies frequencies="@freqParameter.s:Japonic" id="estimatedFreqs.s:Japonic" spec="Frequencies" />
                     </substModel>
                 </siteModel>
-                <branchRateModel clock.rate="@clockRate.c:Japonic" id="StrictClock.c:Japonic" spec="beast.evolution.branchratemodel.StrictClockModel" />
+                <branchRateModel clock.rate="@ucldMean.c:Japonic" id="RelaxedClock.c:Japonic" rateCategories="@rateCategories.c:Japonic" spec="beast.evolution.branchratemodel.UCRelaxedClockModel" tree="@Tree.t:Japonic">
+                    <LogNormal S="@ucldStdev.c:Japonic" id="LogNormalDistributionModel.c:Japonic" meanInRealSpace="true" name="distr">
+                        <parameter estimate="false" id="RealParameter.M" lower="0.0" name="M" upper="1.0">1.0</parameter>
+                    </LogNormal>
+                </branchRateModel>
             </distribution>
         </distribution>
         
@@ -263,11 +275,19 @@ YONAGUNI=0                <taxa id="TaxonSet.Japonic" spec="TaxonSet">
     <operator id="wide.t:Japonic" isNarrow="false" spec="Exchange" tree="@Tree.t:Japonic" weight="3.0" />
 
     <operator id="WilsonBalding.t:Japonic" spec="WilsonBalding" tree="@Tree.t:Japonic" weight="3.0" />
+	
+	<operator id="CategoriesRandomWalk.c:Japonic" parameter="@rateCategories.c:Japonic" spec="IntRandomWalkOperator" weight="10.0" windowSize="1" />
 
-    <operator id="StrictClockRateScaler.c:Japonic" parameter="@clockRate.c:Japonic" scaleFactor="0.75" spec="ScaleOperator" weight="3.0" />
+	<operator id="CategoriesSwapOperator.c:Japonic" intparameter="@rateCategories.c:Japonic" spec="SwapOperator" weight="10.0" />
 
-    <operator id="strictClockUpDownOperator.c:Japonic" scaleFactor="0.75" spec="UpDownOperator" weight="3.0">
-        <up idref="clockRate.c:Japonic" />
+	<operator id="CategoriesUniform.c:Japonic" parameter="@rateCategories.c:Japonic" spec="UniformOperator" weight="10.0" />
+
+    <operator id="ucldMeanScaler.c:Japonic" parameter="@ucldMean.c:Japonic" scaleFactor="0.5" spec="ScaleOperator" weight="1.0" />
+
+	<operator id="ucldStdevScaler.c:Japonic" parameter="@ucldStdev.c:Japonic" scaleFactor="0.5" spec="ScaleOperator" weight="3.0" />
+
+	<operator id="relaxedUpDownOperator.c:Japonic" scaleFactor="0.75" spec="UpDownOperator" weight="3.0">
+        <up idref="ucldMean.c:Japonic" />
         <down idref="Tree.t:Japonic" />
     </operator>
 
@@ -295,7 +315,9 @@ YONAGUNI=0                <taxa id="TaxonSet.Japonic" spec="TaxonSet">
         <log id="TreeHeight.t:Japonic" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:Japonic" />
         <log idref="RGSMucldMeanGamma.s:Japonic" />         <log idref="RGSMucldStdevGamma.s:Japonic" />
         <log idref="freqParameter.s:Japonic" />
-        <log idref="clockRate.c:Japonic" />
+        <log idref="ucldMean.c:Japonic" />
+		<log idref="ucldStdev.c:Japonic" />
+		<log branchratemodel="@RelaxedClock.c:Japonic" id="rate.c:Japonic" spec="beast.evolution.branchratemodel.RateStatistic" tree="@Tree.t:Japonic" />
         <log idref="MiddleJapaneseTip.prior" />
         <log idref="OldJapaneseTip.prior" />
         <log idref="TokyoKyoto.prior" />
@@ -311,7 +333,7 @@ YONAGUNI=0                <taxa id="TaxonSet.Japonic" spec="TaxonSet">
     </logger>
 
     <logger fileName="Japonic_CoalConst_RGSM_1.trees" id="treelog.t:Japonic" logEvery="3000" mode="tree">
-        <log id="TreeWithMetaDataLogger.t:Japonic" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:Japonic" />
+        <log branchratemodel="@RelaxedClock.c:Japonic" id="TreeWithMetaDataLogger.t:Japonic" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:Japonic" />
     </logger>
 
 </run>

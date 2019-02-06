@@ -151,8 +151,11 @@ MIDDLE_JAPANESE=548                <taxa id="TaxonSet.Japonic" spec="TaxonSet">
             </trait>
             <taxonset idref="TaxonSet.Japonic" />
         </tree>
+		<parameter id="ucldMean.c:Japonic" name="stateNode">1.0</parameter>
+		<parameter id="ucldStdev.c:Japonic" lower="0.0" name="stateNode">0.1</parameter>
+		<stateNode dimension="36" id="rateCategories.c:Japonic" spec="parameter.IntegerParameter">1</stateNode>
+		<parameter id="gammaShape.s:Japonic" name="stateNode">1.0</parameter>
         <parameter id="deathRate.SDollo" lower="0.0" name="stateNode">1.0E-4</parameter>
-        <parameter id="clockRate.c:Japonic" name="stateNode">0.001</parameter>
         <parameter dimension="3" id="bPopSizes.t:Japonic" lower="0.0" name="stateNode" upper="380000.0">3800.0</parameter>
         <stateNode dimension="3" id="bGroupSizes.t:Japonic" spec="parameter.IntegerParameter">1</stateNode>
     </state>
@@ -173,8 +176,19 @@ MIDDLE_JAPANESE=548                <taxa id="TaxonSet.Japonic" spec="TaxonSet">
                 <Exponential id="Exponential.0" name="distr">
                     <parameter id="RealParameter.DeathRate" lower="0.0" name="mean" upper="0.0">1.0E-4</parameter>                </Exponential>
             </prior>
-            <prior id="ClockPrior.c:Japonic" name="distribution" x="@clockRate.c:Japonic">
-                <Uniform id="Uniform.clockMean" lower="1.0E-5" name="distr" upper="1.0" />
+			<prior id="GammaShapePrior.s:Japonic" name="distribution" x="@gammaShape.s:Japonic">
+                <Exponential id="Exponential.gamma" name="distr">
+                    <parameter id="RealParameter.gammashape" lower="0.0" name="mean" upper="0.0">1.0</parameter>
+                </Exponential>
+            </prior>
+            <prior id="MeanRatePrior.c:Japonic" name="distribution" x="@ucldMean.c:Japonic">
+                <Uniform id="Uniform.MRP" lower="1.0E-5" name="distr" upper="1.0" />
+            </prior>
+            <prior id="ucldStdevPrior.c:Japonic" name="distribution" x="@ucldStdev.c:Japonic">
+                <Gamma id="Gamma.UCLN" name="distr">
+                    <parameter estimate="false" id="RealParameter.A" name="alpha">0.5396</parameter>
+                    <parameter estimate="false" id="RealParameter.B" name="beta">0.3819</parameter>
+                </Gamma>
             </prior>
             <distribution id="MiddleJapaneseTip.prior" spec="beast.math.distributions.MRCAPrior" tipsonly="true" tree="@Tree.t:Japonic">
                 <taxonset id="MiddleJapaneseTip" spec="TaxonSet">
@@ -211,7 +225,7 @@ MIDDLE_JAPANESE=548                <taxa id="TaxonSet.Japonic" spec="TaxonSet">
                     <data data="@Japonic" filter="-" id="orgdata.Japonic" spec="FilteredAlignment">
                         <userDataType extantCode="1" id="MutationDeathType.0" spec="beast.evolution.datatype.MutationDeathType" />
                     </data>
-                    <siteModel id="SiteModel.s:Japonic" spec="SiteModel">
+                    <siteModel id="SiteModel.s:Japonic" spec="SiteModel", shape="@gammaShape.s:Japonic", gammaCategoryCount="4">
                         <parameter estimate="false" id="mutationRate.s:Japonic" name="mutationRate">1.0</parameter>
                         <parameter estimate="false" id="proportionInvariant.s:Japonic" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
                         <substModel deathprob="@deathRate.SDollo" id="SDollo" spec="MutationDeathModel">
@@ -223,11 +237,17 @@ MIDDLE_JAPANESE=548                <taxa id="TaxonSet.Japonic" spec="TaxonSet">
                 </observationprocess>
                 <data idref="orgdata.Japonic" />
                 <siteModel idref="SiteModel.s:Japonic" />
-                <branchRateModel clock.rate="@clockRate.c:Japonic" id="StrictClock.c:Japonic" spec="beast.evolution.branchratemodel.StrictClockModel" />
+                <branchRateModel clock.rate="@ucldMean.c:Japonic" id="RelaxedClock.c:Japonic" rateCategories="@rateCategories.c:Japonic" spec="beast.evolution.branchratemodel.UCRelaxedClockModel" tree="@Tree.t:Japonic">
+                    <LogNormal S="@ucldStdev.c:Japonic" id="LogNormalDistributionModel.c:Japonic" meanInRealSpace="true" name="distr">
+                        <parameter estimate="false" id="RealParameter.M" lower="0.0" name="M" upper="1.0">1.0</parameter>
+                    </LogNormal>
+                </branchRateModel>
             </distribution>
         </distribution>
         
     </distribution>
+	
+	<operator id="gammaShapeScaler.s:Japonic" parameter="@gammaShape.s:Japonic" scaleFactor="0.5" spec="ScaleOperator" weight="0.1" />
 
     <operator id="deathRateSDolloScaler" parameter="@deathRate.SDollo" scaleFactor="0.5" spec="ScaleOperator" weight="3.0" />
 
@@ -251,8 +271,19 @@ MIDDLE_JAPANESE=548                <taxa id="TaxonSet.Japonic" spec="TaxonSet">
     <operator id="wide.t:Japonic" isNarrow="false" spec="Exchange" tree="@Tree.t:Japonic" weight="3.0" />
 
     <operator id="WilsonBalding.t:Japonic" spec="WilsonBalding" tree="@Tree.t:Japonic" weight="3.0" />
+	
+	<operator id="CategoriesRandomWalk.c:Japonic" parameter="@rateCategories.c:Japonic" spec="IntRandomWalkOperator" weight="10.0" windowSize="1" />
 
+	<operator id="CategoriesSwapOperator.c:Japonic" intparameter="@rateCategories.c:Japonic" spec="SwapOperator" weight="10.0" />
 
+	<operator id="CategoriesUniform.c:Japonic" parameter="@rateCategories.c:Japonic" spec="UniformOperator" weight="10.0" />
+
+	<operator id="ucldStdevScaler.c:Japonic" parameter="@ucldStdev.c:Japonic" scaleFactor="0.5" spec="ScaleOperator" weight="3.0" />
+
+	<operator id="relaxedUpDownOperator.c:Japonic" scaleFactor="0.75" spec="UpDownOperator" weight="3.0">
+        <up idref="deathRate.SDollo:Japonic" />
+        <down idref="Tree.t:Japonic" />
+    </operator>
 
     <operator id="BayesianSkylineTreeScaler.t:Japonic" scaleFactor="0.5" spec="ScaleOperator" tree="@Tree.t:Japonic" weight="3.0" />
 
@@ -280,8 +311,11 @@ MIDDLE_JAPANESE=548                <taxa id="TaxonSet.Japonic" spec="TaxonSet">
         <log idref="prior" />
         <log idref="treeLikelihood.Japonic" />
         <log id="TreeHeight.t:Japonic" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:Japonic" />
+		<log idref="gammaShape.s:Japonic" />
         <log idref="deathRate.SDollo" />
-        <log idref="clockRate.c:Japonic" />
+        <log idref="ucldMean.c:Japonic" />
+		<log idref="ucldStdev.c:Japonic" />
+		<log branchratemodel="@RelaxedClock.c:Japonic" id="rate.c:Japonic" spec="beast.evolution.branchratemodel.RateStatistic" tree="@Tree.t:Japonic" />
         <log idref="TokyoKyoto.prior" />
         <log idref="OldJapaneseTip.prior" />
         <log idref="MiddleJapaneseTip.prior" />
@@ -298,7 +332,7 @@ MIDDLE_JAPANESE=548                <taxa id="TaxonSet.Japonic" spec="TaxonSet">
     </logger>
 
     <logger fileName="Japonic_CoalSkyline_SDOLLO_2.trees" id="treelog.t:Japonic" logEvery="3000" mode="tree">
-        <log id="TreeWithMetaDataLogger.t:Japonic" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:Japonic" />
+        <log branchratemodel="@RelaxedClock.c:Japonic" id="TreeWithMetaDataLogger.t:Japonic" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:Japonic" />
     </logger>
 
 </run>
